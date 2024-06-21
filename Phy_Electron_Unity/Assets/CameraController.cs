@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         // Initialize current distance based on the initial camera position
+        //test commit
         currentDistance = Vector3.Distance(transform.position, centerPoint.position);
     }
 
