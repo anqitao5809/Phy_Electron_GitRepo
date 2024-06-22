@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ParticleMover : MonoBehaviour
+public class OldParticleMover : MonoBehaviour
 {
     public Transform waypoint1;
     public Transform waypoint2;
@@ -8,11 +8,10 @@ public class ParticleMover : MonoBehaviour
     public Transform waypoint4;
     public Transform waypoint5;
     public Transform waypoint6;
-
-    public float speed = 6.925f; // Speed calculated as total path length (55.4 units) divided by 8 seconds
-    public float helixRadius = 1.25f; // Diameter is 2.5 units, so radius is 1.25 units
-    public float helixTurns = 20f; // Total of 20 turns in the helix
-    public float helixHeight = 5.1f; // Total height of the helix
+    public float speed = 2f;
+    public float helixRadius = 1.25f;
+    public float helixTurns = 20f;
+    public float helixHeight = 5.1f;
 
     private int currentSegment = 0;
     private Vector3 startPoint;
@@ -46,15 +45,19 @@ public class ParticleMover : MonoBehaviour
 
             // Calculate x and y coordinates based on helix path
             float theta = 2f * Mathf.PI * helixTurns * t;
-            float x = helixRadius * Mathf.Cos(theta);
-            float y = helixRadius * Mathf.Sin(theta);
+            float x = helixRadius * Mathf.Cos(-theta) - helixRadius;
+            float y = helixRadius * Mathf.Sin(-theta);
+
+            // Calculate period of the cosine function of x
+            float cosPeriod = helixHeight / helixTurns;
 
             // Calculate z coordinate based on linear interpolation
-            float zSpeed = helixHeight / helixTurns / helixLength; // Speed of z movement
+            float zSpeed = helixHeight / helixTurns / cosPeriod; // Speed of z movement
             float z = -t * zSpeed * helixHeight; // Linearly interpolate z
 
             transform.position = new Vector3(x, y, z) + startPoint;
         }
+
 
         // Check if the segment is complete
         if (fractionOfJourney >= 1)

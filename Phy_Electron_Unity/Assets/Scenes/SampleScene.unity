@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 276006607}
   - component: {fileID: 276006606}
   - component: {fileID: 276006605}
+  - component: {fileID: 276006609}
   m_Layer: 0
   m_Name: Particle
   m_TagString: Untagged
@@ -227,6 +228,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &276006609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276006604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd963707fa7009e4e82d386bfba69d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoint1: {fileID: 640557635}
+  waypoint2: {fileID: 1348137079}
+  waypoint3: {fileID: 1766300819}
+  waypoint4: {fileID: 1101797934}
+  waypoint5: {fileID: 2053557626}
+  waypoint6: {fileID: 575674035}
+  speed: 2
+  helixRadius: 1.25
+  helixTurns: 20
+  helixHeight: 5.1
 --- !u!1001 &556263277
 PrefabInstance:
   m_ObjectHideFlags: 0
