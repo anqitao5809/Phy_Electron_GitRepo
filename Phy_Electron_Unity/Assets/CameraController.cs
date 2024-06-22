@@ -18,8 +18,8 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         // Set initial position and rotation for isometric view
-        Vector3 direction = (new Vector3(30, 30, -30)).normalized;
-        initialPosition = centerPoint.position + direction * 30f;  // 5 units away from the center
+        Vector3 direction = (new Vector3(10, 10, -10)).normalized;
+        initialPosition = centerPoint.position + direction * 15f;  // 5 units away from the center
         initialRotation = Quaternion.LookRotation(centerPoint.position - initialPosition);
 
         transform.position = initialPosition;
