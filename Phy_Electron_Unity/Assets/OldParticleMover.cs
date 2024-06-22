@@ -8,10 +8,10 @@ public class OldParticleMover : MonoBehaviour
     public Transform waypoint4;
     public Transform waypoint5;
     public Transform waypoint6;
-    public float speed = 2f;
+    public float speed = 1f;
     public float helixRadius = 1.25f;
     public float helixTurns = 20f;
-    public float helixHeight = 5.1f;
+    public float helixHeight = 5.1f;    
 
     private int currentSegment = 0;
     private Vector3 startPoint;
