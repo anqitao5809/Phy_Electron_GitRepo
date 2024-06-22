@@ -12,16 +12,34 @@ public class CameraController : MonoBehaviour
 
     private float currentYAngle = 0f;
     private float currentDistance;
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
 
     private void Start()
     {
-        // Initialize current distance based on the initial camera position
-        //test commit
+        // Set initial position and rotation for isometric view
+        Vector3 direction = (new Vector3(30, 30, -30)).normalized;
+        initialPosition = centerPoint.position + direction * 30f;  // 5 units away from the center
+        initialRotation = Quaternion.LookRotation(centerPoint.position - initialPosition);
+
+        transform.position = initialPosition;
+        transform.rotation = initialRotation;
+
+        // Initialize current distance
         currentDistance = Vector3.Distance(transform.position, centerPoint.position);
     }
 
     private void Update()
     {
+        // Reset the camera position and rotation if the game is paused
+        if (!Application.isPlaying)
+        {
+            transform.position = initialPosition;
+            transform.rotation = initialRotation;
+            currentDistance = Vector3.Distance(transform.position, centerPoint.position);
+            return;
+        }
+
         // Rotate the camera when the left mouse button is held down
         if (Input.GetMouseButton(0))
         {
@@ -38,7 +56,7 @@ public class CameraController : MonoBehaviour
 
             transform.RotateAround(centerPoint.position, transform.right, rotationChange);
 
-            // Keep the camera's orientation fixed (optional)
+            // Keep the camera's orientation fixed
             transform.LookAt(centerPoint);
         }
 
